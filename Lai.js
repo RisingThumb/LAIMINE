@@ -9,9 +9,9 @@ const mineflayer = require('mineflayer');
 const navigatePlugin = require('mineflayer-navigate')(mineflayer);
 var blockFinderPlugin = require('mineflayer-blockfinder')(mineflayer);
 const bot = mineflayer.createBot({host: "localhost",
-  port: 62950,
-  username: '@@@',
-  password: '@@@',
+  port: 62524,
+  username: '123',
+  password: '123',
   verbose: true,
   version: "1.12.2", });
 // install the plugin
@@ -28,6 +28,9 @@ bot.navigate.blocksToAvoid[8] = true; //avoid flowing water
 bot.navigate.blocksToAvoid[59] = false; // ok to trample crops
 bot.navigate.blocksToAvoid[44] = true; //avoid slabs
 bot.navigate.blocksToAvoid[126] = true; //avoid newer slabs
+bot.navigate.blocksToAvoid[85] = true; //avoid newer slabs
+bot.navigate.blocksToAvoid[171] = true; //avoid newer slabs
+bot.navigate.blocksToAvoid[139] = true; //avoid newer slabs
 
 bot.navigate.on('pathFound', function (path) {
   //console.log("found path. I can get there in " + path.length + " moves.");
@@ -60,7 +63,7 @@ rl.on('line', (input) => {
   else if (input === 'fight') {
     rofl=setInterval(showZeds,200)//Every 200ms checks for zombies and attacko
   }else if (input === 'forth') {//This can definitely be streamlined with a switch-case statement for multiple locations
-    bot.navigate.to(vec3({x:3655, y:64, z:-1205}));
+    bot.navigate.to(vec3({x:-2850, y:64, z:-2140}));
   }
   else if (input === 'items') {
     sayItems()
@@ -154,7 +157,7 @@ function showZeds () {
   }
   for(;i<len;i++){
   //console.log(closeZedsId[i].position)
-  swapper(276)
+  swapper(268)
   bot.navigate.stop()
   bot.lookAt(closeZedsId[i].position.plus(vec3(0, 0.7, 0)))
   bot.attack(closeZedsId[i])
